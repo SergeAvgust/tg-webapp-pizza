@@ -1,0 +1,33 @@
+<head>
+    <link rel="stylesheet" href="static/style.css">
+    
+</head>
+<body>
+    <h2>Admin Index</h2>
+    {% if pizzas %}
+
+        <div class="container">
+            <div class="innerHorizontal">
+                {% for pizza in pizzas %}
+                <div class="item">
+                    <img src="static/img/{{pizza.image}}" alt="{{pizza.name}}" class="img">
+                    <p>{{pizza.name}}</p>
+                    <button class="btn" id="{{pizza.id}}">{{pizza.price}} ₽</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    {% else %} 
+    <p>Меню пусто!</p>
+    {% endif %}
+    <h4>Заказы:</h4>
+    {% if orders %}
+        <ul>
+            <li>Номер заказа || Юзернейм заказчика || Заказ (пицца) || Сумма</li>
+            {% for order in orders %}
+            <li>{{order.id}} || {{order.user}} || {{order.total_pizzas}} || {{order.money}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
